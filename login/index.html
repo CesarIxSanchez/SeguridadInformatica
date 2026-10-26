@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Login SQLi Demo</title>
+    <title>Login seguro</title>
     <style>
       body {
         font-family: sans-serif;
@@ -29,9 +29,22 @@
   </head>
   <body>
     <form id="loginForm">
-      <h2>Login (demo SQLi)</h2>
-      <input id="username" placeholder="Usuario" required />
-      <input id="password" type="text" placeholder="Contraseña" required />
+      <h2>Login</h2>
+      <input
+        id="username"
+        placeholder="Usuario"
+        maxlength="64"
+        autocomplete="username"
+        required
+      />
+      <input
+        id="password"
+        type="password"
+        placeholder="Contraseña"
+        maxlength="128"
+        autocomplete="current-password"
+        required
+      />
       <button type="submit">Entrar</button>
     </form>
     <pre id="out"></pre>
@@ -44,18 +57,18 @@
           const username = document.getElementById("username").value;
           const password = document.getElementById("password").value;
 
-          const res = await fetch("/login-vulnerable", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password }),
-          });
-
-          const data = await res.json();
-          document.getElementById("out").textContent = JSON.stringify(
-            data,
-            null,
-            2,
-          );
+          const output = document.getElementById("out");
+          try {
+            const res = await fetch("/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ username, password }),
+            });
+            const data = await res.json();
+            output.textContent = JSON.stringify(data, null, 2);
+          } catch {
+            output.textContent = "No se pudo completar el login.";
+          }
         });
     </script>
   </body>

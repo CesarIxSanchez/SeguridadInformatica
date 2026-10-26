@@ -1,6 +1,4 @@
-# ================================
-# Dependencias
-# ================================
+# Dependencies and package managers
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -8,71 +6,58 @@ yarn-error.log*
 pnpm-debug.log*
 .pnpm-store/
 
-# ================================
-# Archivos de entorno y secretos
-# ================================
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Environment files and secrets
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 *.pem
 *.key
+clave.key
+privada.pem
+users.json
 
-# ================================
-# Bases de datos locales
-# ================================
+# Local databases and data
 *.sqlite
 *.sqlite3
 *.db
 *.db-journal
 data/
 
-# ================================
 # Logs
-# ================================
 logs/
 *.log
 
-# ================================
-# Cobertura de tests
-# ================================
+# Test coverage and build output
 coverage/
 .nyc_output/
-
-# ================================
-# Build / dist
-# ================================
 dist/
 build/
 *.tsbuildinfo
 
-# ================================
-# Caché de herramientas
-# ================================
+# Tool caches
 .cache/
 .parcel-cache/
 .eslintcache
 .npm/
 .yarn/
 
-# ================================
-# Sistema operativo
-# ================================
+# Operating system
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# ================================
-# Editores / IDEs
-# ================================
+# Editors and temporary files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# ================================
-# Varios
-# ================================
 tmp/
 temp/
 *.bak
